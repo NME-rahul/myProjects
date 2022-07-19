@@ -4,3 +4,6 @@
 
 
 * This file work fine in both windows and macos
+
+* Sample output
+  ![img]
