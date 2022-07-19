@@ -5,5 +5,4 @@
 
 * This file work fine in both windows and macos
 
-* Sample output
-  ![img]
+* if it shows invalid api ID you can create your own from [openweathermap.org](https://home.openweathermap.org/api_keys)
