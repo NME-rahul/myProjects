@@ -1,4 +1,4 @@
-#Python-Arduino
+# Python-Arduino
 
 >this python code collects the data from internet and send it arduino, now we can use this data as we want.
 
