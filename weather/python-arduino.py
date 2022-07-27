@@ -139,10 +139,7 @@ class ReadJSON(SerialCommunication):
 
     def read_writeArduino(self):
         if self.msg == 'ok':
-            for i in self.keys:
-                for x in data[i]:
-                    print(x)
-                    self.arduino.write(bytes(x, 'utf-8'))
+            self.arduino.write(bytes(self.main['temp'], 'utf-8'))
                           
 
 def initiate():
