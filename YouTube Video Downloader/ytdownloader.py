@@ -26,9 +26,9 @@ master.title()
 icon = PhotoImage(file='icon.png')
 master.iconphoto(True, icon)
 #setting background image
-#background = ImageTk.PhotoImage(Image.open('blue-and-brown-abstract-painting--wallpaper.jpg'))
-#label = Label(master, image=background)
-#label.place(x=0, y=0)
+'''background = ImageTk.PhotoImage(Image.open('blue-and-brown-abstract-painting--wallpaper.jpg'))
+label = Label(master, image=background)
+label.place(x=0, y=0)'''
 
 
 link = StringVar()
@@ -56,20 +56,14 @@ def Downloader():
 
     def buttons(cnt):
         if cnt == 0:
-            #select Resolution
-            '''Label(text='Select video Resolution').pack(padx=0, pady=5)
-            avail_resolution =  url.streams.filter(adaptive=True)
-            ttk.Combobox(master, values = [i for i in avail_resolution], textvariable = resolution, state = 'readonly', width = 90).pack(padx=5)'''
-                
             #select file extension
             Label(text='Select video Extension', bg='white').pack(padx=0, pady=5)
             avail_extension = ['mp4', 'mp3'] #avaiable extensions
             ttk.Combobox(master, values = avail_extension, textvariable = extension, state = 'readonly', width = 50).pack(padx=5, pady=5)
             #select Resolution
             Label(text='Select video Resolution', bg='white').pack(padx=0, pady=5)
-            avail_resolution = ['144p', '240p', '360p', '480p', '720p', '1080p', '1440p', '2160p']
-            #[stream.resolution for stream in url.streams.filter(progressive=True).all()]
-            ttk.Combobox(master, values = avail_resolution ,  textvariable = resolution, state = 'readonly', width = 50).pack(padx=5)
+            #avail_resolution = ['144p', '240p', '360p', '480p', '720p', '1080p', '1440p', '2160p']
+            ttk.Combobox(master, values = [stream.resolution for stream in url.streams.filter(progressive=True).all()],  textvariable = resolution, state = 'readonly', width = 50).pack(padx=5)
             #select FPS
             Label(text='Select file FPS', bg='white').pack(padx=0, pady=5)
             button_1 = ttk.Combobox(master, values = [stream.fps for stream in url.streams.filter(progressive=True).all()], textvariable = fps, state = 'readonly', width = 50).pack(padx=5)
