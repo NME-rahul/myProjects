@@ -11,12 +11,13 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     
-    char start, end;
+    char start = 97, end = 122;
     short int length;
     
-    start = 97;
-    end = 122;
-
+    cout<<"Enter start: ";
+    cin >> start;
+    cout<<"Enter stop: ";
+    cin >> stop;
     cout<<"Enter length: ";
     cin >> length;
 
