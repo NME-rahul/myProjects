@@ -18,7 +18,7 @@ void SensorGetValues();
 ESP8266WebServer server(80);
 CRGB leds[NUM_LEDS];
 int val = 0;
-bool sensorFlag = true;
+bool sensorFlag = true, onOff=true;
 
 void setup(){
   Serial.begin(BAUDRATE);
@@ -79,7 +79,9 @@ void loop(void){
   if(WiFi.status()==WL_CONNECTED){
     server.handleClient();
     if(sensorFlag){
-      SensorGetValues();
+      SensorGetValues(onOff);
+	    if(onOff){onOff=false;}
+	    onOff=true;
     }
   }
 }
@@ -200,12 +202,11 @@ void LEDOff(){
 
 void SensorGetValues(){
   val = digitalRead(SENSOR_PIN);
-  if(val == HIGH){
+  if(val == HIGH && onOff == true){
     Serial.println("Motion detected!");
     patternON(255, 136, 0);
-    //delay(DELAY);
   }
-  else{
+  else if(val == LOW && onOff == false){
     Serial.println("Motion ended.");
     patternOFF(0, 0, 0);
   }
@@ -227,15 +228,12 @@ void yellow(){
   LEDS.showColor(CRGB(255, 255, 0));
 }
 void neon(){
-  while(true){
-    LEDS.showColor(CRGB(199,36,177));delay(100);
-    LEDS.showColor(CRGB(7,77,255));delay(100);
-    LEDS.showColor(CRGB(224,231,34));delay(100);
-    LEDS.showColor(CRGB(210,39,48));delay(100);
-    LEDS.showColor(CRGB(219,62,177));delay(100);
-    LEDS.showColor(CRGB(68,214,44));delay(100);
-    break;
-  }
+  LEDS.showColor(CRGB(199,36,177));delay(100);
+  LEDS.showColor(CRGB(7,77,255));delay(100);
+  LEDS.showColor(CRGB(224,231,34));delay(100);
+  LEDS.showColor(CRGB(210,39,48));delay(100);
+  LEDS.showColor(CRGB(219,62,177));delay(100);
+  LEDS.showColor(CRGB(68,214,44));delay(100);
 }
 void seaBlue(){
   LEDS.showColor(CRGB(0, 255, 213));
