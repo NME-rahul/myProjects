@@ -15,7 +15,7 @@
 
 ---
 
-## better.py is a command line tool for youtube video downloads, just type
+# better.py is a command line tool for youtube video downloads, just type
 
     better.py [args1] url [args2]
     
@@ -62,3 +62,7 @@
 * for whole playlist in audio only format
 
         better.py -p/playslist -a/audio url -d path
+        
+**Note:** if you found error(like below) with terminal prompt try by putting url within single quotes('').
+> (base) rahulverma@Rahuls-MacBook-Air desktop % python better.py https://www.youtube.com/watch?v=o-7b6ctrQX0
+zsh: no matches found: https://www.youtube.com/watch?v=o-7b6ctrQX0
