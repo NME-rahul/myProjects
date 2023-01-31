@@ -32,8 +32,8 @@ def start():
 
     error0 = 'error: wrong url or unstable internet connection.\n'
 
-    if os.path.exists(path + '\\highest_resolution\\')==False:
-      os.mkdir(path + '\\highest_resolution\\')
+    if os.path.exists(path + '/highest_resolution/')==False:
+      os.mkdir(path + '/highest_resolution/')
 
     print('downloading...')
     if vidORlist == 0:
@@ -44,7 +44,7 @@ def start():
           out = vid.streams.filter(only_audio=True).desc().first().download()
           ConvInAudio(out)
         else:
-          vid.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '\\highest_resolution\\' )
+          vid.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '/highest_resolution' )
           vid.streams.get_highest_resolution().download(output_path=path)
       except:
         sys.exit(error0)
