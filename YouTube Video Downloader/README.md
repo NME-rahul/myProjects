@@ -15,16 +15,50 @@
 
 ---
 
-### better.py is a command line tool for youtube video downloads, just type
+## better.py is a command line tool for youtube video downloads, just type
 
-    better.py url
-    better.py url -d path
-    better.py -a/audio url
-    better.py -a/audio url -d path
-    better.py -v/video -a/audio url
-    better.py -v/video -a/audio url -d path
-    better.py -p/playlist url
-    better.py -p/playslist url -d path
-    better.py -p/playslist -a/audio url
-    better.py -p/playslist -a/audio url -d path
-    better.py video(-v)/playlist[-p] audio(-a) url -d path
+    better.py [args1] url [args2]
+    
+   > args1:
+     * video or -v
+     * playlist or -p
+     * audio or -a
+    
+   > args2:
+     * -d with path
+  
+  <br><br>
+    
+* for video only
+
+        better.py url
+    
+* for video only with specific path
+
+        better.py url -d path
+        
+* for audio only
+
+        better.py -a/audio url
+        better.py -v/video -a/audio url
+        
+* for audio only with specific path
+
+        better.py -a/audio url -d path
+        better.py -v/video -a/audio url -d path
+        
+* for whole playlist
+
+        better.py -p/playlist url
+    
+* for whole playlist with specific path
+
+        better.py -p/playslist url -d path
+        
+* for whole playlist in audio only format
+
+        better.py -p/playslist -a/audio url
+        
+* for whole playlist in audio only format
+
+        better.py -p/playslist -a/audio url -d path
