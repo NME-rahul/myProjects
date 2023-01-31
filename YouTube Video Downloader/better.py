@@ -104,7 +104,7 @@ def start():
         vidORlist = 1
         url = sys.argv[2]
   else:
-    print('Error: No argumnets were arguments given.')
+    sys.exit('No argumnets were arguments given.')
   
   Download(vidORlist, url, path, extension)
 
