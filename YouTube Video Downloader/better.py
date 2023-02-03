@@ -25,10 +25,11 @@ file video(-v)/playlist[-p] audio(-a) url -d path
 def start():
   def descrip(vid):
     try:
-      print(vid.title, 'at', path, 'in', extension, 'format', '\nViews: ', vid.views, '\nDescription: \n',vid.description)
+      print(vid.title, 'at', path, 'in', extension, 'format', '\nViews: ',vid.views, '\n\nDescription:\n',vid.description)
       caption = vid.caption
-	    if bool(caption) != False:
-	      print('\nCaptions: \n',vid.captions.get_by_language_code('en').generate_srt_captions())
+      if bool(caption) != False:
+        fp = open(f'Captions {vid.title}.srt', 'w')
+        fp.write(caption.get_by_language_code('en').generate_srt_captions())
     except:
       pass
 
@@ -41,8 +42,8 @@ def start():
 
     error0 = 'error: wrong url or unstable internet connection.\n'
 
-    if os.path.exists(path + '\\highest_resolution\\')==False:
-      os.mkdir(path + '\\highest_resolution\\')
+    if os.path.exists(path + '/highest_resolution/')==False:
+      os.mkdir(path + '/highest_resolution/')
 
     print('downloading...')
     if vidORlist == 0:
@@ -53,7 +54,7 @@ def start():
           out = vid.streams.filter(only_audio=True).desc().first().download()
           ConvInAudio(out)
         else:
-          vid.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '\\highest_resolution\\' )
+          vid.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '/highest_resolution/' )
           vid.streams.get_highest_resolution().download(output_path=path)
       except:
         sys.exit(error0)
@@ -69,10 +70,10 @@ def start():
       else:
         for better in vid.videos:
           print(vid.title, 'at', path, 'in', extension, 'format')
-          #better.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '\\highest_resolution\\' )
+          #better.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '/highest_resolution/' )
           better.streams.get_highest_resolution().download(output_path=path)
         
-    print('done.')
+    print('\Download Completed.')
   
   length = len(sys.argv)
   if length > 6:
