@@ -23,6 +23,15 @@ file video(-v)/playlist[-p] audio(-a) url -d path
 '''
 
 def start():
+  def descrip(vid):
+    try:
+      print(vid.title, 'at', path, 'in', extension, 'format', '\nViews: ', vid.views, '\nDescription: \n',vid.description)
+      caption = vid.caption
+	    if bool(caption) != False:
+	      print('\nCaptions: \n',vid.captions.get_by_language_code('en').generate_srt_captions())
+    except:
+      pass
+
   def ConvInAudio(out):
     base, ext = os.path.splitext(out)
     audio = base + '.mp3'
@@ -32,25 +41,26 @@ def start():
 
     error0 = 'error: wrong url or unstable internet connection.\n'
 
-    if os.path.exists(path + '/highest_resolution/')==False:
-      os.mkdir(path + '/highest_resolution/')
+    if os.path.exists(path + '\\highest_resolution\\')==False:
+      os.mkdir(path + '\\highest_resolution\\')
 
     print('downloading...')
     if vidORlist == 0:
       try:
         vid = yt.YouTube(url)
-        print(vid.title, 'at', path, 'in', extension, 'format')
+        descrip(vid)
         if extension=='mp3':
           out = vid.streams.filter(only_audio=True).desc().first().download()
           ConvInAudio(out)
         else:
-          vid.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '/highest_resolution' )
+          vid.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '\\highest_resolution\\' )
           vid.streams.get_highest_resolution().download(output_path=path)
       except:
         sys.exit(error0)
 
     elif vidORlist == 1:
       vid = yt.Playlist(url)
+      descrip(vid)
       if extension=='mp3':
         for better in vid.videos:
           print(better.title, 'at', path, 'in', extension, 'format')
@@ -104,7 +114,7 @@ def start():
         vidORlist = 1
         url = sys.argv[2]
   else:
-    sys.exit('No argumnets were arguments given.')
+    sys.exit('Error: No argumnets were arguments given.')
   
   Download(vidORlist, url, path, extension)
 
