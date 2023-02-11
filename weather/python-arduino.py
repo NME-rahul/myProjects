@@ -62,7 +62,7 @@ class SerialCommunication:
 
 class ReadJSON(SerialCommunication):
 
-    defaultPath = 'C:/project/WeatherReport.txt'
+    defaultPath = os.getcwd() + '/weatherReport.txt'
 
     msg = ''
 
@@ -86,8 +86,8 @@ class ReadJSON(SerialCommunication):
         if self.msg == 'ok':
             self.data = json.loads(self.res)
 
-            self.fp = open(self.defaultPath,'r+')
-            os.system('date /t > '+self.defaultPath); os.system('time /t > '+self.defaultPath);
+            self.fp = open(self.defaultPath,'w+')
+            #os.system('date > '+self.defaultPath); os.system('time  > '+self.defaultPath);
             self.fp.write(self.res)
             self.fp.write('\n\n')
             self.fp.close()
@@ -144,9 +144,10 @@ class ReadJSON(SerialCommunication):
 
 def initiate():
       initiate_msg = 'Start'
+      text.delete("1.0","end")
       text.insert(END, 'Port: ' + dflt_port.get() + '\n' )
       text.insert(END, 'Baudrate: ' + dflt_baudrate.get() + '\n' )
-      text.insert(END, 'Bytesize: ' + dflt_bytesize.get() + '\n')
+      text.insert(END, 'Bytesize: ' + dflt_bytesize.get())
 
       obj2 = SerialCommunication()
       obj2.portConfiguration(dflt_port)
@@ -190,4 +191,3 @@ create_Buttons()
 
 #last
 master.mainloop()
-
