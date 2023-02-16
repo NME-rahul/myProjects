@@ -5,21 +5,10 @@ import pytube as yt
 
 '''
 file url
-file url -d path
+file url path
 
-file -a/audio url
-file -a/audio url -d path
-
-file -v/video -a/audio url
-file -v/video -a/audio url -d path
-
-file -p/playlist url
-file -p/playslist url -d path
-
-file -p/playslist -a/audio url
-file -p/playslist -a/audio url -d path
-
-file video(-v)/playlist[-p] audio(-a) url -d path
+file url -a/audio
+file url -a/audio path
 '''
 
 def start():
@@ -38,19 +27,25 @@ def start():
     audio = base + '.mp3'
     os.rename(out, audio)
 
-  def Download(vidORlist, url, path, extension):
+  def Download(url, path, audio):
 
     error0 = 'error: wrong url or unstable internet connection.\n'
 
     if os.path.exists(path + '/highest_resolution/')==False:
       os.mkdir(path + '/highest_resolution/')
+    
+    def is_playlist(url):
+        if url[20] == 'p':
+            return True
+        else:
+            return False
 
     print('downloading...')
-    if vidORlist == 0:
+    if is_playlist(url) == False:
       try:
         vid = yt.YouTube(url)
         descrip(vid)
-        if extension=='mp3':
+        if audio==True:
           out = vid.streams.filter(only_audio=True).desc().first().download()
           ConvInAudio(out)
         else:
@@ -59,64 +54,45 @@ def start():
       except:
         sys.exit(error0)
 
-    elif vidORlist == 1:
+    else:
       vid = yt.Playlist(url)
       descrip(vid)
-      if extension=='mp3':
+      if audio==True:
         for better in vid.videos:
-          print(better.title, 'at', path, 'in', extension, 'format')
+          print(better.title, 'at', path, 'in', 'audio', 'format')
           out = better.streams.filter(only_audio=True).desc().first().download()
           ConvInAudio(out)
       else:
         for better in vid.videos:
-          print(vid.title, 'at', path, 'in', extension, 'format')
+          print(vid.title, 'at', path, 'in', 'video', 'format')
           #better.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '/highest_resolution/' )
           better.streams.get_highest_resolution().download(output_path=path)
         
     print('\Download Completed.')
   
   length = len(sys.argv)
-  if length > 6:
+  if length > 4:
     sys.exit(f'error: excepts only 4 arguments {length} given')
 
   elif length > 1:
     url = sys.argv[1]
     path = os.getcwd()
-    vidORlist = 0
-    extension = 'nonAudio'
+    audio = False
 
-    if length==6:
-      path = sys.argv[5]
-      url = sys.argv[3]
-      extension = 'mp3'
-
-    elif length==5:
-      path = sys.argv[4]
-      url = sys.argv[2]
-      if sys.argv[1]=='-a' or sys.argv[1]=='audio':
-        extension = 'mp3'
-      elif sys.argv[1]=='-p' or sys.argv[1]=='playlist':
-        vidORlist = 1
+    if length==3:
+        if sys.argv[2]=='-a' or sys.argv[2]=='audio':
+            audio = True
+        else:
+            path = sys.argv[2]
 
     elif length==4:
-      url = sys.argv[3]
       if sys.argv[2]=='-a' or sys.argv[2]=='audio':
-        extension = 'mp3'
-      elif sys.argv[2] == '-d':
-        path = sys.argv[2]
-      if sys.argv[1]=='-p' or sys.argv[1]=='playlist':
-        vidORlist = 1
+        audio = True
+        path = sys.argv[3]
 
-    elif length==3:
-      url = sys.argv[2]
-      if sys.argv[1]=='-a' or sys.argv[1]=='audio':
-        extension = 'mp3'
-      elif sys.argv[1]=='-p' or sys.argv[1]=='playlist':
-        vidORlist = 1
-        url = sys.argv[2]
   else:
     sys.exit('Error: No argumnets were arguments given.')
   
-  Download(vidORlist, url, path, extension)
+  Download(url, path, audio)
 
 start()
