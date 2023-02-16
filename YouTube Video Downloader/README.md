@@ -17,16 +17,12 @@
 
 # better.py is a command line tool for youtube video downloads, just type
 
-    better.py [args1] url [args2]
+    better.py url [args]
     
    > args1:
-     * video or -v
-     * playlist or -p
      * audio or -a
-    
-   > args2:
-     * -d with path
-  
+     * path
+   
   <br><br>
     
 * for video only
@@ -35,33 +31,17 @@
     
 * for video only with specific path
 
-        better.py url -d path
+        better.py url path
         
 * for audio only
 
-        better.py -a/audio url
-        better.py -v/video -a/audio url
+        better.py url -a/audio
+        
         
 * for audio only with specific path
 
-        better.py -a/audio url -d path
-        better.py -v/video -a/audio url -d path
-        
-* for whole playlist
-
-        better.py -p/playlist url
-    
-* for whole playlist with specific path
-
-        better.py -p/playslist url -d path
-        
-* for whole playlist in audio only format
-
-        better.py -p/playslist -a/audio url
-        
-* for whole playlist in audio only format
-
-        better.py -p/playslist -a/audio url -d path
+        better.py url -a/audio path
+        better.py url -a/audio path
         
 **Note:** if you found error(like below) with terminal prompt try by putting url within single quotes('').
 > (base) rahulverma@Rahuls-MacBook-Air desktop % python better.py https://www.youtube.com/watch?v=o-7b6ctrQX0
