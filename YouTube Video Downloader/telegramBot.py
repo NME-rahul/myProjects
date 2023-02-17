@@ -6,7 +6,7 @@ import telebot as tb
 Error0 = 'An Error Ocuured while Downloading video :('
 Error1 = 'An unknown Error has benn occured :('
 
-BOT_TOKEN = '5844826162:AAGbi1vg4Bb_3CZv-fw3cDm0OzCtlzMS-bI'
+BOT_TOKEN = 'Paste Your Bot Token ID here.'
 
 bot = tb.TeleBot(BOT_TOKEN)
 
