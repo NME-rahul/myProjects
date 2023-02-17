@@ -8,7 +8,7 @@ import thread
 Error0 = 'An Error Ocuured while Downloading video :('
 Error1 = 'An unknown Error has benn occured :('
 
-BOT_TOKEN = '5844826162:AAGbi1vg4Bb_3CZv-fw3cDm0OzCtlzMS-bI'
+BOT_TOKEN = 'paste your bot token here.'
 
 bot = tb.TeleBot(BOT_TOKEN)
 
