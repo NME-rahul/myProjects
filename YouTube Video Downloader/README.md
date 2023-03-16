@@ -19,11 +19,11 @@
 
     better.py url [args]
     
-   > args1:
-     * audio or -a
-     * path
+   > args:
+          <br> * audio or -a
+          <br> * path
    
-  <br><br>
+  <br>
     
 * for video only
 
@@ -40,7 +40,6 @@
         
 * for audio only with specific path
 
-        better.py url -a/audio path
         better.py url -a/audio path
         
 **Note:** if you found error(like below) with terminal prompt try by putting url within single quotes('').
