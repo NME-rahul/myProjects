@@ -36,8 +36,6 @@ def send_email(emails, message):
             break
 
         return False
-        
-    
 
 def send_SMS(method, query):
     url = 'REST_API url'
@@ -88,6 +86,3 @@ if __name__ == '__main__':
     if send_email(emails, msg) != True:
         sys.exit(error)
     
-    
-
-
