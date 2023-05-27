@@ -1,3 +1,10 @@
+## For SMS
+To send SMS or MMS you need to create a REST API.
+here i used https://www.fast2sms.com/ API.
+create you own and generate API Key.
+
+
+## For Emails
 You need to crate app password for sending emails through gmail
 NOTE: don't use your official password of gmail it will not work
 
