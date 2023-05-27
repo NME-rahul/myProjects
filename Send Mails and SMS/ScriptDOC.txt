@@ -13,7 +13,7 @@ Important: To create an app password, you need 2-Step Verification on your Googl
 
 If you use 2-Step-Verification and get a "password incorrect" error when you sign in, you can try to use an app password.
 
-1. Go to your Google Account.
+1. Go to your Google Account(https://myaccount.google.com/).
 2. Select Security
 3. Under "Signing in to Google," select 2-Step Verification.
 4. At the bottom of the page, select App passwords.
