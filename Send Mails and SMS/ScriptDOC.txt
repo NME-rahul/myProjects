@@ -1,0 +1,16 @@
+You need to crate app password for sending emails through gmail
+NOTE: don't use your official password of gmail it will not work
+
+Create & use app passwords
+Important: To create an app password, you need 2-Step Verification on your Google Account.
+
+If you use 2-Step-Verification and get a "password incorrect" error when you sign in, you can try to use an app password.
+
+1. Go to your Google Account.
+2. Select Security
+3. Under "Signing in to Google," select 2-Step Verification.
+4. At the bottom of the page, select App passwords.
+5. Enter a name that helps you remember where you’ll use the app password.
+6. Select Generate.
+7. To enter the app password, follow the instructions on your screen. The app password is the 16-character code that generates on your device.
+8. Select Done.
