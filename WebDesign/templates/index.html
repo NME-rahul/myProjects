@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<title>CodingEye</title>
+<link rel="icon" type="image/x-icon" href="assets/images/fevicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="assets/css/header-footer.css" >
+<link rel="stylesheet" href="assets/css/pannels.css" >
+<link rel="stylesheet" href="assets/css/about.css" >
+<link rel="stylesheet" href="assets/css/image-slideshow.css" >
+<link rel="stylesheet" href="assets/login/login.css" >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+	<!--Header-->
+	<div class="header">
+		<img src="assets/images/fevicon.png" alt="logo" class="logo">
+		<div class="header-right">
+			<a href="#">Home</a>
+			<a href="#bottom">Contact</a>
+			<a href="#about">About</a>
+			<a href="assets/login/login.html">Login</a>
+		</div>
+	</div>
+	
+	<!--slideshow-->
+	<div class="slideshow-container">
+		<div class="mySlides fade">
+  			<img class="slideshow-images" src="assets/images/slideshow-image1.jpg" style="width:100%">
+		</div>
+
+		<div class="mySlides fade">
+  			<img class="slideshow-images" src="assets/images/slideshow-image2.jpg" style="width:100%">
+		</div>
+
+		<div class="mySlides fade">
+  			<img class="slideshow-images" src="assets/images/slideshow-image3.jpg" style="width:100%">
+		</div>
+		<div style="text-align:center">
+  			<span class="dot" onclick="currentSlide(1)"></span> 
+  			<span class="dot" onclick="currentSlide(2)"></span> 
+  			<span class="dot" onclick="currentSlide(3)"></span> 
+		</div>
+	</div>
+	
+	<!--side pannel-->
+	<div class = "pannels">
+      	<div class = "leftpannel">
+			<div class="sidebarSubjects">
+		   		<br><a href="#" class="active-subject">Human Development Index</a></li>
+					
+				<br><a href="#" class="active-subject">Crime Index</a>
+					
+				<br><a href="#" class="sactive-subject">Economy Report</a>
+					
+				<br><a href="#" class="active-subject">Democarcy Scale</a>
+					
+				<br><a href="#" class="sactive-subject">Education Report</a>
+					
+				<br><a href="#" class="active-subject">Judicary Index</a>
+					
+				<br><a href="#" class="active-subject">Journalism</a>
+					
+				<br><a href="#" class="active-subject">Caste Hate</a>
+					
+				<br><a href="#" class="active-subject">Religion Hate</a>
+					
+				<br><a href="#" class="active-subject">Hunger Index</a>
+			</div>
+        	</div>
+        	<div class = "rightpannel"> 
+        		<div class="articles">
+				<div class="news 1">
+  					<q>I love you the more in that I believe you had liked me for my own sake and for nothing else</q>
+  					<p class="author">- John Keats</p>
+				</div>
+
+				<div class="news 2">
+  					<q>But man is not made for defeat. A man can be destroyed but not defeated.</q>
+  					<p class="author">- Ernest Hemingway</p>
+				</div>
+
+				<div class="news 3">
+ 					<q>I have not failed. I've just found 10,000 ways that won't work.</q>
+  					<p class="author">- Thomas A. Edison</p>
+				</div>
+			</div>
+			<a class="prev" onclick="plusSlides(-1)">❮</a>
+			<a class="next" onclick="plusSlides(1)">❯</a>
+	 	 </div>
+      </div>
+
+	<!--About Us secetion-->
+	<div class="about-section">
+		<h1>About Us</h1>
+		<p>Will write here about us.</p>
+	</div>
+	<h1 style="text-align:center">Our Team</h1>
+	<div class="columnAbout">
+		<div class="container">
+			<img src="assets/images/image1.jpg" alt="Avatar" class="photo" style="width:100%">
+			<div class="middle">
+		 		<p>Designer<br><br>Text for me<br><br><i style='font-size:24px' class='fas'>&#xf1d8;</i><br>Click for contact</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="columnAbout">
+		<div class="container">
+			<img src="assets/images/image2.jpeg" alt="Avatar" class="photo" style="width:100%">
+			<div class="middle">
+		 		<p>Designer<br><br>Text for me<br><br><i style='font-size:24px' class='fas'>&#xf1d8;</i><br>Click for contact</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="columnAbout">
+		<div class="container">
+			<img src="assets/images/image3.jpg" alt="Avatar" class="photo" style="width:100%">
+			<div class="middle">
+		 		<p>Designer<br><br>Text for me<br><br><i style='font-size:24px' class='fas'>&#xf1d8;</i><br>Click for contact</p>
+			</div>
+		</div>
+	</div>
+
+	<!--Footer Section-->
+	<footer>
+		<div class="row primary">
+		    	<div class="column about">
+		      	<h3>Connect</h3>
+		        	<p>
+		            	<i class="fa fa-map-marker" aria-hidden="true"></i> Jaipur, Rajasthan
+		        	</p>
+		        	<div class="social">
+		            	<i class="fa fa-facebook-square"></i>
+		            	<i class="fa fa-twitter-square"></i>
+		            	<i class="fa fa-linkedin-square"></i>
+		            	<i class="fa fa-instagram"></i>
+		        	</div>
+		    	</div>
+
+		    	<div class="column link">
+		      	<h3>Links</h3>
+		        	<ul>
+		            	<li><a href="#home">Home</a></li>  <!--jump to start of the page-->
+		            	<li><a href="#team">Team</a></li>
+		            	<li><a href="#blogs">Blogs</a></li>
+		            	<li><a href="#support">Support</a></li>
+		        	</ul>
+		    	</div>
+
+		    	<div class="column subscribe">
+		        	<h3>Newsletter</h3>
+		        	<div>
+		          	 	<input type="email" placeholder="Write Your Query Here" />
+		           		<button action="assets/php/sentMail.php" class="button button2">Send</button>
+		        	</div>
+		    	</div>
+		</div>
+		<div class="row copyright">
+		  	<div class="footer-menu">
+		  		<a href="#">Home</a>
+		  		<a href="">F.A.Q</a>
+		  		<a href="">Cookies Policy</a>
+		  		<a href="">Terms Of Service</a>
+		  		<a href="">Support</a>
+		  	</div>
+		   	<p>Copyright &copy; RahulVerma 2023</p>
+		</div>
+	</footer>
+	<div id="bottom"></div>
+</body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="assets/images/GlaucomaDetection-web.js"></script>
+	<script src="assets/js/image-slideshow.js"></script>
+	<script src="assets/js/text-slideshow.js"></script>
+	<script>
+		var hamburger = document.querySelector(".hamburger");
+		hamburger.addEventListner("click", function()){
+		document.querySelector("body").class.List.toogle("active-subject")
+		}
+	</script>
+</html>

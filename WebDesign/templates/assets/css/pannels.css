@@ -1,0 +1,15 @@
+/*side pannel*/
+.pannels{width: 100%;}
+
+.leftpannel{width: 25%; height: 620px; float: left; text-align: center; background-color: #f1f1f1f1;
+		border-radius: 6px;
+  		transition: all 0.5s ease;}
+.sidebarSubjects a{color: black; display: block;  text-decoration: none; font-size: 18px; padding: 10px; border-radius: 4px;}
+.sidebarSubjects a:hover{color: white; background-color: dodgerblue;}
+
+.rightpannel{margin-left: 0%; height: 620px; background: white;}
+.articles{text-align: center; height: 595px; padding: 5%;}
+.prev, .next {cursor: pointer; border-radius: 0 3px 3px 0;}
+.prev:hover, .next:hover {background-color: rgba(0,0,0,0.8); color: white;}
+q {font-style: italic;}
+.author {color: cornflowerblue;}
