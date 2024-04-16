@@ -11,6 +11,26 @@ file url -a/audio
 file url -a/audio path
 '''
 
+args = '''
+* for video only
+
+        better.py url
+    
+* for video only with specific path
+
+        better.py url path
+        
+* for audio only
+
+        better.py url -a/audio
+        
+        
+* for audio only with specific path
+
+        better.py url -a/audio path
+'''
+
+
 def start():
   def descrip(vid):
     try:
@@ -91,7 +111,7 @@ def start():
         path = sys.argv[3]
 
   else:
-    sys.exit('Error: No argumnets were arguments given.')
+    sys.exit(f'Error: No argumnets were arguments given.\n{args}\n')
   
   Download(url, path, audio)
 
