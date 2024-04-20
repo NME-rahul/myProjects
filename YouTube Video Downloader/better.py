@@ -1,15 +1,11 @@
 import sys
 import os
 
-import pytube as yt
+import pytube as p
+from pytube.cli import on_progress
+from pytube.innertube import _default_clients
 
-'''
-file url
-file url path
-
-file url -a/audio
-file url -a/audio path
-'''
+_default_clients["ANDROID_MUSIC"] = _default_clients["ANDROID_CREATOR"]
 
 args = '''
 * for video only
@@ -30,66 +26,49 @@ args = '''
         better.py url -a/audio path
 '''
 
+age_restric = '''is age restricted, and can't be accessed without logging in.'''
 
-def start():
-  def descrip(vid):
-    try:
-      print(vid.title, 'at', path, 'in', extension, 'format', '\nViews: ',vid.views, '\n\nDescription:\n',vid.description)
-      caption = vid.caption
-      if bool(caption) != False:
-        fp = open(f'Captions {vid.title}.srt', 'w')
-        fp.write(caption.get_by_language_code('en').generate_srt_captions())
-    except:
-      pass
 
-  def ConvInAudio(out):
-    base, ext = os.path.splitext(out)
-    audio = base + '.mp3'
-    os.rename(out, audio)
-
-  def Download(url, path, audio):
-
-    error0 = 'error: wrong url or unstable internet connection.\n'
-
-    if os.path.exists(path + '/highest_resolution/')==False:
-      os.mkdir(path + '/highest_resolution/')
-    
-    def is_playlist(url):
-        if url[20] == 'p':
-            return True
-        else:
-            return False
-
-    print('downloading...')
-    if is_playlist(url) == False:
-      try:
-        vid = yt.YouTube(url)
-        descrip(vid)
-        if audio==True:
-          out = vid.streams.filter(only_audio=True).desc().first().download()
-          ConvInAudio(out)
-        else:
-          vid.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '/highest_resolution/' )
-          vid.streams.get_highest_resolution().download(output_path=path)
-      except:
-        sys.exit(error0)
-
+def getVideo(url, path, audio):
+  try:
+    vid = p.YouTube(url,
+                  use_oauth = False,
+                  allow_oauth_cache=True,
+                  on_progress_callback=on_progress)
+    print(vid.title, 'at', path, '\nViews:',vid.views)    
+    if audio==True:
+      out = vid.streams.filter(progressive=True, only_audio=True).desc().first().download()
+      ConvInAudio(out)
     else:
-      vid = yt.Playlist(url)
-      descrip(vid)
-      if audio==True:
-        for better in vid.videos:
-          print(better.title, 'at', path, 'in', 'audio', 'format')
-          out = better.streams.filter(only_audio=True).desc().first().download()
-          ConvInAudio(out)
-      else:
-        for better in vid.videos:
-          print(vid.title, 'at', path, 'in', 'video', 'format')
-          #better.streams.filter(file_extension='mp4').order_by('resolution').desc().first().download(output_path=path + '/highest_resolution/' )
-          better.streams.get_highest_resolution().download(output_path=path)
-        
-    print('\Download Completed.')
-  
+      vid.streams.get_highest_resolution().download(output_path=path)
+  except Exception as AgeRestrictedError:
+    print(AgeRestrictedError)
+  except Exception as RegexMatchError:
+    print(RegexMatchError)
+  except Exception as VideoUnavailableError:
+    print(VideoUnavailableError)
+    
+def ConvInAudio(out):
+  base, ext = os.path.splitext(out)
+  audio = base + '.mp3'
+  os.rename(out, audio)
+    
+def is_playlist(url):
+  if url[20] == 'p':
+    return True
+  else:
+    return False
+    
+def start(url, path, audio):
+  if is_playlist(url) == False:
+    getVideo(url, path, audio)
+  else:
+    playlist = p.Playlist(url)
+    for url in playlist:
+      print("\n")
+      getVideo(url, path, audio)
+
+if __name__ == '__main__':
   length = len(sys.argv)
   if length > 4:
     sys.exit(f'error: excepts only 4 arguments {length} given')
@@ -100,10 +79,10 @@ def start():
     audio = False
 
     if length==3:
-        if sys.argv[2]=='-a' or sys.argv[2]=='audio':
-            audio = True
-        else:
-            path = sys.argv[2]
+      if sys.argv[2]=='-a' or sys.argv[2]=='audio':
+        audio = True
+      else:
+        path = sys.argv[2]
 
     elif length==4:
       if sys.argv[2]=='-a' or sys.argv[2]=='audio':
@@ -113,6 +92,4 @@ def start():
   else:
     sys.exit(f'Error: No argumnets were arguments given.\n{args}\n')
   
-  Download(url, path, audio)
-
-start()
+  start(url, path, audio)
